@@ -1,0 +1,5 @@
+selenium>=4.15.0
+pytest>=7.0.0
+deep-translator>=1.11.4
+requests>=2.31.0
+browserstack-sdk>=1.0.0
