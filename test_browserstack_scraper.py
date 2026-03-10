@@ -1,15 +1,3 @@
-"""
-test_browserstack_scraper.py
------------------------------
-BrowserStack cross-browser test for El País Opinion scraper.
-The SDK intercepts webdriver.Chrome() and routes to BrowserStack's grid.
-Test logic is inherited from testcases.py.
-Images are saved under images/bstack_<uuid>/ per parallel session.
-
-Run:
-    browserstack-sdk pytest -s -v test_browserstack_scraper.py
-"""
-
 import os
 import uuid
 import pytest

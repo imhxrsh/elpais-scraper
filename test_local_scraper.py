@@ -1,18 +1,8 @@
-"""
-test_local_scraper.py
----------------------
-Local Selenium test for El País Opinion scraper.
-Uses headless Chrome. Test logic is inherited from testcases.py.
-Images are saved under images/local_<timestamp>/ to avoid overwrites.
-
-Run:
-    pytest -s -v test_local_scraper.py
-"""
-
 import os
 import pytest
 from datetime import datetime
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 from testcases import BaseTestElPaisScraper, IMAGES_BASE
@@ -23,16 +13,20 @@ from testcases import BaseTestElPaisScraper, IMAGES_BASE
 
 @pytest.fixture(scope="module")
 def driver():
-    """Create a local headless Chrome WebDriver instance."""
+    """Create a local Chrome WebDriver instance."""
     opts = Options()
-    opts.add_argument("--headless=new")
+    opts.add_argument("--headless=new")  # keep disabled to see browser
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("--disable-gpu")
     opts.add_argument("--window-size=1920,1080")
     opts.add_argument("--lang=es")
-    drv = webdriver.Chrome(options=opts)
-    drv.implicitly_wait(10)
+
+    drv = webdriver.Chrome(
+        service=Service("/usr/bin/chromedriver"),
+        options=opts
+    )
+
     yield drv
     drv.quit()
 

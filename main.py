@@ -1,13 +1,3 @@
-"""
-main.py
--------
-Convenience entry-point for running the El País scraper locally or on BrowserStack.
-
-Usage:
-    python main.py --local          Run locally with headless Chrome
-    python main.py --browserstack   Run on BrowserStack (requires credentials)
-"""
-
 import subprocess
 import sys
 import argparse
